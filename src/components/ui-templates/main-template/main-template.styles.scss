@@ -7,8 +7,8 @@
   column-gap: 10px;
   row-gap: 10px;
   grid-template-columns: 150px 1fr;
-  height: 100%;
-  grid-template-rows: auto 90%;
+  height: calc(100vh - 20px);
+  grid-template-rows: auto 1fr;
 
   .header-content {
     grid-area: header;

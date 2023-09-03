@@ -7,7 +7,6 @@ import PageHeader from "../../page-header";
 import Header from "../../header";
 
 const MainTemplate = ({ navigation, children }) => {
-  
   return (
     <section className="main-template">
       <header className="header-content">

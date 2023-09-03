@@ -1,4 +1,4 @@
-{
+const pizzaData = {
     "Cheese": [
       "Margherita",
       "Four Cheese",
@@ -46,4 +46,6 @@
       "Tandoori Delight"
     ]
   }
+
+  export default pizzaData
   

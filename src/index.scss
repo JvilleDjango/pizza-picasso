@@ -39,6 +39,12 @@
   background-color: #555; /* Customize the hover color */
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body,
 .MuiTypography-body1,
 .MuiTypography-body2 {

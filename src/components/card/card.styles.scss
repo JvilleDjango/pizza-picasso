@@ -1,7 +1,11 @@
 .card {
   transition: all 0.2s ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: none;
+  box-shadow: none !important;
+
+  &.MuiCard-root {
+    box-shadow: none !important;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -16,12 +20,26 @@
   }
 
   .MuiCardActionArea-root {
+    .MuiCardMedia-root {
+      width: 100%;
+    }
+    &.MuiButtonBase-root {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      height: 100%;
+      svg {
+        fill: var(--accent-color);
+      }
+    }
     &:hover {
       opacity: 1;
     }
   }
 
-  .MuiCardHeader-content, .MuiCardContent-root {
+  .MuiCardHeader-content,
+  .MuiCardContent-root {
     text-align: center !important;
 
     .MuiTypography-root {
@@ -45,5 +63,17 @@
   }
   .MuiAvatar-img {
     height: auto;
+  }
+
+  &.add {
+    transition: none;
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      cursor: pointer;
+      background-color: #fff;
+    }
   }
 }

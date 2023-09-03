@@ -3,35 +3,33 @@ import "./card.styles.scss";
 
 import {
   Card,
-  CardHeader,
-  Avatar,
   CardActionArea,
   CardMedia,
   CardContent,
   Typography,
 } from "@mui/material/";
 
-const Cards = ({ topping }) => {
-  return (
-    <Card className="card">
-      <CardActionArea>
-        {/* <CardHeader
-          avatar={<Avatar  aria-label="recipe">
-          R
-        </Avatar>}
-          title={topping}
-          // subheader={expense.description}
-        /> */}
+import missingImage from "../../assets/pizza_placeholder.png";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-        <CardMedia
-          sx={{ height: 75 }}
-          image="https://picsum.photos/75"
-          title="green iguana"
-        />
+const Cards = ({ data }) => {
+  return (
+    <Card className={`card ${data === "Add" ? "add" : ""}`}>
+      <CardActionArea>
+        {data !== "Add" ? (
+          <CardMedia
+            sx={{ height: 120 }}
+            image={missingImage}
+            title="toppings"
+            component="img"
+          />
+        ) : (
+          <AddCircleIcon sx={{ fontSize: 60 }} color="primary" />
+        )}
 
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {topping}
+            {data}
           </Typography>
         </CardContent>
       </CardActionArea>

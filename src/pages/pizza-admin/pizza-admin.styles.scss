@@ -1,21 +1,49 @@
 .pizza-admin {
   &-navigation {
     margin-bottom: 25px;
+
+    .MuiTab-root.Mui-selected {
+      color: var(--primary-color) !important;
+    }
+    .MuiTabs-indicator {
+      background-color: var(--primary-color) !important;
+    }
+
+    .actions {
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 12px 0 24px;
+      }
+
+      &-left {
+        .MuiButton-root {
+          background-color: var(--accent-color);
+        }
+      }
+    }
   }
 
-  header {
-    font-size: 1.25rem;
-    padding: 15px 0;
-  }
-  &-grid {
-  }
-
-  .toppings-grid {
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      150px
-    ); /* Create columns that are 50px wide */
-    gap: 10px; /* Add a gap between columns */
+  .toppings {
+    &-list {
+      header {
+        font-size: 1.25rem;
+        padding: 15px 0;
+        font-family: "Cinzel Decorative";
+        color: var(--text-color);
+        font-weight: bold;
+        letter-spacing: 0.095rem;
+      }
+    }
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        150px
+      ); /* Create columns that are 50px wide */
+      gap: 10px; /* Add a gap between columns */
+    }
   }
 }

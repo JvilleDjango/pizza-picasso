@@ -5,11 +5,11 @@ import Cards from "../../components/card";
 
 import toppingData from "../../api/toppings/toppings";
 
-import Box from "@mui/material/Box";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
+import { Box, Tab, Tabs, Typography, Button, IconButton } from "@mui/material";
 
+import AddIcon from "@mui/icons-material/Add";
+import ViewListIcon from "@mui/icons-material/ViewList";
+import GridViewIcon from "@mui/icons-material/GridView";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,6 +47,10 @@ const PizzaAdmin = () => {
     setValue(newValue);
   };
 
+  const handleAdd = () => {
+    console.log("open form");
+  };
+
   useEffect(() => {
     toppingData && setToppings(toppingData);
   }, [toppingData]);
@@ -56,6 +60,7 @@ const PizzaAdmin = () => {
       <div className="pizza-admin-navigation">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
+            className="tabs"
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
@@ -63,6 +68,12 @@ const PizzaAdmin = () => {
             <Tab label="Meats" {...a11yProps(0)} />
             <Tab label="Veggies" {...a11yProps(1)} />
             <Tab label="Extras" {...a11yProps(2)} />
+            <Tab
+              icon={<AddIcon />}
+              iconPosition="start"
+              label="New"
+              className="new"
+            />
           </Tabs>
         </Box>
 
@@ -74,14 +85,34 @@ const PizzaAdmin = () => {
             index={i}
           >
             <header>{category}</header>
+            <div className="actions-container">
+              <div className="actions-left">
+                <Button
+                  startIcon={<AddIcon />}
+                  variant="contained"
+                  disableElevation
+                  onClick={handleAdd}
+                >
+                  Add
+                </Button>
+              </div>
+              <div className="actions-right">
+                <IconButton aria-label="view list">
+                  <ViewListIcon />
+                </IconButton>
+                <IconButton aria-label="view grid">
+                  <GridViewIcon />
+                </IconButton>
+              </div>
+            </div>
             <div className="toppings-grid">
               {toppings[category].map((topping, j) => (
-                <Cards topping={topping} key={j} />
+                <Cards data={topping} key={j} />
               ))}
+              <Cards data={"Add"} />
             </div>
           </CustomTabPanel>
         ))}
-  
       </div>
     </section>
   );
