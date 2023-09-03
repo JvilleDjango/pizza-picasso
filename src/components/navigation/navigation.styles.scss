@@ -1,0 +1,50 @@
+.helm {
+  .MuiList-root {
+    padding: 10px;
+
+    .MuiTypography-root {
+      font-size: 0.9rem;
+    }
+
+    .MuiButtonBase-root {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      text-align: center;
+      padding: 15px;
+      transition: all 0.3s ease-in-out;
+      
+      &:hover {
+        border-radius: 5px;
+      }
+
+      .MuiListItemIcon-root {
+        min-width: 0px;
+
+        svg {
+          color: var(--text-color);
+        }
+      }
+    }
+  }
+
+  a {
+    color: var(--text-color);
+    margin-bottom: 5px;
+  }
+
+  .active {
+    background: rgba(62, 39, 35, 0.15);
+    border-radius: 5px;
+
+    .MuiButtonBase-root {
+      .MuiListItemIcon-root {
+        svg {
+          color: var(--accent-color);
+        }
+      }
+    }
+  }
+}

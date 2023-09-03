@@ -1,0 +1,49 @@
+.card {
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: none;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    cursor: pointer;
+    background-color: #fff;
+  }
+
+  a {
+    height: 100%;
+  }
+
+  .MuiCardActionArea-root {
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .MuiCardHeader-content, .MuiCardContent-root {
+    text-align: center !important;
+
+    .MuiTypography-root {
+      font-size: 0.738rem;
+      font-weight: 300;
+      line-height: 1.1875em;
+    }
+
+    // .MuiTypography-body2 {
+    //   &:nth-of-type(2) {
+    //     font-size: 0.738rem;
+    //     font-weight: 300;
+    //     line-height: 1.1875em;
+    //   }
+    // }
+  }
+
+  .MuiAvatar-root {
+    width: 60px;
+    height: 60px;
+  }
+  .MuiAvatar-img {
+    height: auto;
+  }
+}

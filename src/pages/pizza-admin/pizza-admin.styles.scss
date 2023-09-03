@@ -1,0 +1,21 @@
+.pizza-admin {
+  &-navigation {
+    margin-bottom: 25px;
+  }
+
+  header {
+    font-size: 1.25rem;
+    padding: 15px 0;
+  }
+  &-grid {
+  }
+
+  .toppings-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      150px
+    ); /* Create columns that are 50px wide */
+    gap: 10px; /* Add a gap between columns */
+  }
+}

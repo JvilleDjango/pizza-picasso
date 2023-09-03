@@ -1,0 +1,22 @@
+.page-header {
+  flex-grow: 4;
+
+  h4 {
+    font-size: 1.4rem !important;
+    font-family: "Montserrat" !important;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-style: italic;
+    font-size: .875rem;
+  }
+
+  .MuiTypography-body2 {
+    margin-bottom: 0 !important;
+  }
+
+  h4, p, .MuiTypography-body2 {
+    color: var(--text-color);
+  }
+}

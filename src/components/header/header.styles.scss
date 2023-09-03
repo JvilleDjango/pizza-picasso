@@ -1,0 +1,31 @@
+.mast-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: #fff;
+
+  padding: 20px;
+
+  .logo {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    svg {
+      height: 45px;
+      margin-bottom: 15px;
+    }
+
+    h1,
+    svg {
+      color: var(--primary-color);
+    }
+  }
+}
