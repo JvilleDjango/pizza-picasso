@@ -44,28 +44,34 @@ function a11yProps(index) {
 const PizzaManager = () => {
   const [pizzas, setPizzas] = useState({});
   const [value, setValue] = useState(0);
-
-  const [open, setOpen] = useState(false);
+  const [openFormDialog, setOpenFormDialog] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [dialogType, setDialogType] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleAdd = () => {
-    setOpen(true);
+    setOpenFormDialog(true);
+    setDialogType("add pizza");
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseFormDialog = () => {
+    setOpenFormDialog(false);
   };
 
   const handleCloseModal = () => {
     setOpenModal(false);
   };
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
+  const handleCardAction = (action) => {
+    if (action === "edit") {
+      setOpenFormDialog(true);
+      setDialogType("edit pizza");
+    } else if (action === "delete") {
+      setOpenModal(true);
+    }
   };
 
   useEffect(() => {
@@ -103,14 +109,14 @@ const PizzaManager = () => {
             index={i}
           >
             <header>{`${category} Pizzas`}</header>
-            
+
             <div className="actions-container">
               <div className="actions-left">
                 <Button
                   startIcon={<AddIcon />}
                   variant="contained"
                   disableElevation
-                   onClick={handleAdd}
+                  onClick={handleAdd}
                 >
                   Add
                 </Button>
@@ -127,14 +133,23 @@ const PizzaManager = () => {
 
             <div className="pizza-grid">
               {pizzas[category].map((pizza, j) => (
-                <Cards data={pizza} key={j} />
+                <Cards
+                  data={pizza}
+                  key={j}
+                  onClick={() => handleCardAction("edit", pizza)}
+                  onDelete={() => handleCardAction("delete", pizza)}
+                />
               ))}
               <Cards data={"Add"} onClick={handleAdd} />
             </div>
           </CustomTabPanel>
         ))}
       </div>
-      <FormDialog open={open} onClose={handleClose} type="add pizza" />
+      <FormDialog
+        open={openFormDialog}
+        onClose={handleCloseFormDialog}
+        type={dialogType}
+      />
       <Modal open={openModal} onClose={handleCloseModal} />
     </section>
   );

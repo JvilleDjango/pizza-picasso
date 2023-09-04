@@ -27,6 +27,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const FormDialog = ({ type, open, onClose }) => {
+  console.log(type);
   const [toppings, setToppings] = useState({});
 
   const formik = useFormik({
@@ -63,7 +64,11 @@ const FormDialog = ({ type, open, onClose }) => {
             name="name"
             label="Name"
             // value={formik.values.name}
-            value={"Italian Sausage"}
+            value={
+              type === "add pizza" || type === "edit pizza"
+                ? "Bantha pudu"
+                : "Italian Sausage"
+            }
             onChange={formik.handleChange}
             // error={formik.touched.name && Boolean(formik.errors.name)}
             error={true}

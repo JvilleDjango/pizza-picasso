@@ -43,23 +43,34 @@ function a11yProps(index) {
 const PizzaAdmin = () => {
   const [toppings, setToppings] = useState({});
   const [value, setValue] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [openFormDialog, setOpenFormDialog] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [dialogType, setDialogType] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleAdd = () => {
-    setOpen(true);
+    setOpenFormDialog(true);
+    setDialogType("add topping");
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseFormDialog = () => {
+    setOpenFormDialog(false);
   };
 
   const handleCloseModal = () => {
     setOpenModal(false);
+  };
+
+  const handleCardAction = (action) => {
+    if (action === "edit") {
+      setOpenFormDialog(true);
+      setDialogType("edit topping");
+    } else if (action === "delete") {
+      setOpenModal(true);
+    }
   };
 
   useEffect(() => {
@@ -118,14 +129,23 @@ const PizzaAdmin = () => {
             </div>
             <div className="toppings-grid">
               {toppings[category].map((topping, j) => (
-                <Cards data={topping} key={j} />
+                <Cards
+                  data={topping}
+                  key={j}
+                  onClick={() => handleCardAction("edit", topping)}
+                  onDelete={() => handleCardAction("delete", topping)}
+                />
               ))}
               <Cards data={"Add"} onClick={handleAdd} />
             </div>
           </CustomTabPanel>
         ))}
       </div>
-      <FormDialog open={open} onClose={handleClose} type="add topping" />
+      <FormDialog
+        open={openFormDialog}
+        onClose={handleCloseFormDialog}
+        type={dialogType}
+      />
       <Modal open={openModal} onClose={handleCloseModal} />
     </section>
   );

@@ -18,21 +18,30 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Cards = ({ data, onClick }) => {
+const Cards = ({ data, onClick, onDelete }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setAnchorEl(e.currentTarget);
   };
 
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
 
-  const handleEdit = (e) => {};
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    onClick("edit");
+    handleCloseMenu();
+  };
 
-  const handleDelete = (e) => {};
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    onDelete("delete");
+    handleCloseMenu();
+  };
 
   return (
     <>
