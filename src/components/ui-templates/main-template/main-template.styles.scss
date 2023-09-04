@@ -18,8 +18,6 @@
     align-items: center;
     column-gap: 19px;
     padding: 0.625rem;
-
- 
   }
 
   .left-content {
@@ -44,7 +42,7 @@
     background-color: var(--secondary-color);
     border-radius: 5px;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-areas:
       "header"
@@ -52,14 +50,17 @@
     grid-template-columns: 1fr;
     height: auto;
 
-    .header-content,
     .left-content,
     .right-content {
-      padding: 1rem; 
+      padding: 1rem;
     }
 
-    .left-content{
-      display:none
+    .header-content {
+      padding: 0.4rem;
+    }
+
+    .left-content {
+      display: none;
     }
   }
 }

@@ -36,17 +36,14 @@
 
   @media (max-width: 768px) {
     padding: 5px;
+    width: 100%;
 
     .logo {
       width: 100%;
-      // h1 {
-      //   font-size: 1rem;
-      // }
 
       svg {
-        height: 30px;
+        height: 25px;
         margin-bottom: 0px;
-       
       }
     }
   }

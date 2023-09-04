@@ -29,7 +29,11 @@
     .mast-head .logo {
       flex-direction: row;
       svg {
-        margin-right: 10px
+        margin-right: 10px;
+      }
+
+      h1 {
+        font-size: 5vw;
       }
     }
 
