@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./card.styles.scss";
 
 import {
   Card,
   CardActionArea,
+  CardActions,
   CardMedia,
   CardContent,
   Typography,
   IconButton,
+  CardHeader,
 } from "@mui/material/";
 
 import missingImage from "../../assets/pizza_placeholder.png";
@@ -36,9 +38,9 @@ const Cards = ({ data, onClick, onDelete }) => {
       onClick={onClick}
       onKeyDown={handleKeyDown}
     >
-      <CardActionArea>
-        {data !== "Add" ? (
-          <>
+      <CardHeader
+        action={
+          data !== "Add" ? (
             <IconButton
               onClick={handleDelete}
               onKeyDown={handleKeyDown}
@@ -48,14 +50,19 @@ const Cards = ({ data, onClick, onDelete }) => {
             >
               <DeleteOutlineIcon />
             </IconButton>
-
-            <CardMedia    
-              sx={{ height: 120 }}
-              image={missingImage}
-              title="toppings"
-              component="img"
-            />
-          </>
+          ) : (
+            ""
+          )
+        }
+      />
+      <CardActionArea>
+        {data !== "Add" ? (
+          <CardMedia
+            sx={{ height: 120 }}
+            image={missingImage}
+            title="toppings"
+            component="img"
+          />
         ) : (
           <AddCircleIcon sx={{ fontSize: 60 }} color="primary" />
         )}
