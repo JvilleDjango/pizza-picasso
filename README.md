@@ -28,3 +28,9 @@ Ensure that the UI provides feedback when duplicate pizza names are entered.
 
 
 Consider designing for different devices: desktop, tablet, and mobile.
+
+# Documentation
+https://github.com/JvilleDjango/pizza-picasso/tree/main/documentation
+
+# Demo
+Pizza Picasso - Pizza Magic (pizza-picasso-1249c.web.app)
