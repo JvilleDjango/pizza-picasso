@@ -33,4 +33,4 @@ Consider designing for different devices: desktop, tablet, and mobile.
 https://github.com/JvilleDjango/pizza-picasso/tree/main/documentation
 
 # Demo
-Pizza Picasso - Pizza Magic (pizza-picasso-1249c.web.app)
+https://pizza-picasso-1249c.web.app/pizza-admin
