@@ -9,10 +9,15 @@
 
   .logo {
     display: flex;
-
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    width: 85px;
+    img {
+      height: auto;
+      width: 100%;
+    }
 
     h1 {
       font-size: 1.75rem;
@@ -27,5 +32,27 @@
     svg {
       color: var(--primary-color);
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 5px;
+
+    .logo {
+      width: 100%;
+      h1 {
+        font-size: 1rem;
+      }
+
+      svg {
+        height: 25px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .MuiTypography-body2 {
+    display: none;
   }
 }

@@ -2,8 +2,8 @@
   position: relative;
   display: grid;
   grid-template-areas:
-      "menu header header"
-      "menu main main";
+    "menu header header"
+    "menu main main";
   column-gap: 10px;
   row-gap: 10px;
   grid-template-columns: 150px 1fr;
@@ -19,13 +19,7 @@
     column-gap: 19px;
     padding: 0.625rem;
 
-    .logo {
-      width: 85px;
-      img {
-        height: auto;
-        width: 100%;
-      }
-    }
+ 
   }
 
   .left-content {
@@ -49,5 +43,23 @@
   .header-content {
     background-color: var(--secondary-color);
     border-radius: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-areas:
+      "header"
+      "main";
+    grid-template-columns: 1fr;
+    height: auto;
+
+    .header-content,
+    .left-content,
+    .right-content {
+      padding: 1rem; 
+    }
+
+    .left-content{
+      display:none
+    }
   }
 }

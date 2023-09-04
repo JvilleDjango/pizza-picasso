@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./card.styles.scss";
 
 import {
@@ -16,18 +16,32 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const Cards = ({ data, onClick, onDelete }) => {
+  const cardRef = useRef(null);
+
   const handleDelete = (e) => {
     e.stopPropagation();
     onDelete();
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Perform an action when Enter is pressed
+      console.log("Enter key pressed");
+    }
+  };
+
   return (
-    <Card className={`card ${data === "Add" ? "add" : ""}`} onClick={onClick}>
+    <Card
+      className={`card ${data === "Add" ? "add" : ""}`}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+    >
       <CardActionArea>
         {data !== "Add" ? (
           <>
             <IconButton
               onClick={handleDelete}
+              onKeyDown={handleKeyDown}
               className="card-menu"
               size="small"
               sx={{ ml: 2 }}
@@ -35,7 +49,7 @@ const Cards = ({ data, onClick, onDelete }) => {
               <DeleteOutlineIcon />
             </IconButton>
 
-            <CardMedia
+            <CardMedia    
               sx={{ height: 120 }}
               image={missingImage}
               title="toppings"
