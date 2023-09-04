@@ -26,7 +26,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ paddingTop: 3 }}>
+        <Box sx={{ paddingTop: 2 }}>
           <Typography component="div">{children}</Typography>
         </Box>
       )}
@@ -113,18 +113,9 @@ const PizzaManager = () => {
             value={value}
             index={i}
           >
-            <header>{`${category} Pizzas`}</header>
-
             <div className="actions-container">
               <div className="actions-left">
-                <Button
-                  startIcon={<AddIcon />}
-                  variant="contained"
-                  disableElevation
-                  onClick={handleAdd}
-                >
-                  Add
-                </Button>
+                <header>{`${category} Pizzas`}</header>
               </div>
               <div className="actions-right">
                 <IconButton aria-label="view list">
@@ -133,6 +124,14 @@ const PizzaManager = () => {
                 <IconButton aria-label="view grid">
                   <GridViewIcon />
                 </IconButton>
+                <Button
+                  startIcon={<AddIcon />}
+                  variant="contained"
+                  disableElevation
+                  onClick={handleAdd}
+                >
+                  Add
+                </Button>
               </div>
             </div>
 

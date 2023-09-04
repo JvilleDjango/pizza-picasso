@@ -23,8 +23,9 @@
         padding: 10px;
       }
 
-      &-left {
+      &-right {
         .MuiButton-root {
+          margin-left: 15px;
           background-color: var(--accent-color);
         }
       }
@@ -34,12 +35,11 @@
   .toppings {
     &-list {
       header {
-        font-size: 1.25rem;
-        padding: 0 0 15px 0;
-        font-family: "Cinzel Decorative";
+        font-size: 1rem;
         color: var(--text-color);
         font-weight: bold;
         letter-spacing: 0.095rem;
+        text-transform: uppercase;
       }
     }
     &-grid {

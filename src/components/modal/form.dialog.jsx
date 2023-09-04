@@ -89,7 +89,7 @@ const FormDialog = ({ type, open, onClose }) => {
             error={formik.touched.image && Boolean(formik.errors.image)}
             helperText={formik.touched.image && formik.errors.image}
           />
-          {type === "add pizza" || type === "update pizza" ? (
+          {type === "add pizza" || type === "edit pizza" ? (
             <section className="topping-section">
               {Object.keys(toppings).map((category, i) => (
                 <>

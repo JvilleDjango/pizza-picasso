@@ -25,7 +25,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ paddingTop: 3 }}>
+        <Box sx={{ paddingTop: 2 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -87,15 +87,9 @@ const PizzaAdmin = () => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {["Meats", "Veggies", "Extras"].map(
-              (category, index) => (
-                <Tab
-                  key={index}
-                  label={category}
-                  {...a11yProps(index)}
-                />
-              )
-            )}
+            {["Meats", "Veggies", "Extras"].map((category, index) => (
+              <Tab key={index} label={category} {...a11yProps(index)} />
+            ))}
             <Tab
               icon={<AddIcon />}
               iconPosition="start"
@@ -112,17 +106,9 @@ const PizzaAdmin = () => {
             value={value}
             index={i}
           >
-            <header>{category}</header>
             <div className="actions-container">
               <div className="actions-left">
-                <Button
-                  startIcon={<AddIcon />}
-                  variant="contained"
-                  disableElevation
-                  onClick={handleAdd}
-                >
-                  Add
-                </Button>
+                <header>{category}</header>
               </div>
               <div className="actions-right">
                 <IconButton aria-label="view list">
@@ -131,6 +117,14 @@ const PizzaAdmin = () => {
                 <IconButton aria-label="view grid">
                   <GridViewIcon />
                 </IconButton>
+                <Button
+                  startIcon={<AddIcon />}
+                  variant="contained"
+                  disableElevation
+                  onClick={handleAdd}
+                >
+                  Add
+                </Button>
               </div>
             </div>
             <div className="toppings-grid">
