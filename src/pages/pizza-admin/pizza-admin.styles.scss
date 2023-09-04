@@ -17,7 +17,10 @@
         justify-content: space-between;
         align-items: center;
 
-        padding: 12px 0 24px;
+        background: rgba(62, 39, 35, 0.15);
+        border-radius: 5px;
+        margin-bottom: 15px;
+        padding: 10px;
       }
 
       &-left {
@@ -32,7 +35,7 @@
     &-list {
       header {
         font-size: 1.25rem;
-        padding: 15px 0;
+        padding: 0 0 15px 0;
         font-family: "Cinzel Decorative";
         color: var(--text-color);
         font-weight: bold;
@@ -41,9 +44,10 @@
     }
     &-grid {
       display: grid;
+      justify-content: center;
       grid-template-columns: repeat(
         auto-fill,
-        150px
+        160px
       ); /* Create columns that are 50px wide */
       gap: 10px; /* Add a gap between columns */
     }
