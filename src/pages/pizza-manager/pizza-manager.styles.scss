@@ -30,7 +30,9 @@
         }
       }
       &-left {
-        @media (max-width: 768px) {flex: 1;}
+        @media (max-width: 768px) {
+          flex: 1;
+        }
       }
     }
   }
@@ -55,6 +57,4 @@
       gap: 10px; /* Add a gap between columns */
     }
   }
-
-  
 }
