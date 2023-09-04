@@ -86,6 +86,9 @@ const PizzaAdmin = () => {
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
+            variant="scrollable"
+            scrollButtons="auto"
+            allowScrollButtonsMobile
           >
             {["Meats", "Veggies", "Extras"].map((category, index) => (
               <Tab key={index} label={category} {...a11yProps(index)} />

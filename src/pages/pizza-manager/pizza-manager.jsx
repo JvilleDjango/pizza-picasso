@@ -86,7 +86,10 @@ const PizzaManager = () => {
             className="tabs"
             value={value}
             onChange={handleChange}
-            aria-label="basic tabs example"
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="scrollable auto tabs example"
+            allowScrollButtonsMobile
           >
             {["Cheese", "Meat", "Veggie", "Specialty"].map(
               (category, index) => (
