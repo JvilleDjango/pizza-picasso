@@ -1,0 +1,19 @@
+.form-dialog {
+  > div {
+    margin: 15px 0;
+  }
+
+  .topping-section {
+    header {
+      padding: 15px 0;
+    }
+
+    &-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-rows: auto;
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+  }
+}

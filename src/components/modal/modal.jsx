@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   DialogActions,
@@ -14,14 +14,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const Modal = () => {
+const Modal = ({open, onClose}) => {
   return (
     <div>
       <Dialog
-        // open={open}
+        open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={""}
+        onClose={onClose}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
@@ -30,10 +30,10 @@ const Modal = () => {
           <DialogContentText id="alert-dialog-slide-description"></DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={""} color="primary">
+          <Button onClick={onClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => {}} color="primary">
+          <Button onClick={onClose} color="primary">
             Delete
           </Button>
         </DialogActions>

@@ -4,6 +4,8 @@ import "./pizza-admin.styles.scss";
 import Cards from "../../components/card";
 
 import toppingData from "../../api/toppings/toppings";
+import FormDialog from "../../components/modal/form.dialog";
+import Modal from "../../components/modal";
 
 import { Box, Tab, Tabs, Typography, Button, IconButton } from "@mui/material";
 
@@ -40,15 +42,24 @@ function a11yProps(index) {
 
 const PizzaAdmin = () => {
   const [toppings, setToppings] = useState({});
-
   const [value, setValue] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleAdd = () => {
-    console.log("open form");
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   useEffect(() => {
@@ -109,11 +120,13 @@ const PizzaAdmin = () => {
               {toppings[category].map((topping, j) => (
                 <Cards data={topping} key={j} />
               ))}
-              <Cards data={"Add"} />
+              <Cards data={"Add"} onClick={handleAdd} />
             </div>
           </CustomTabPanel>
         ))}
       </div>
+      <FormDialog open={open} onClose={handleClose} type="add topping" />
+      <Modal open={openModal} onClose={handleCloseModal} />
     </section>
   );
 };

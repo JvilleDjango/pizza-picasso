@@ -20,7 +20,8 @@
   }
 
   .MuiCardActionArea-root {
-    .MuiCardMedia-root {
+    .MuiCardMedia-root,
+    .MuiCardHeader-root {
       width: 100%;
     }
     &.MuiButtonBase-root {
@@ -47,14 +48,6 @@
       font-weight: 300;
       line-height: 1.1875em;
     }
-
-    // .MuiTypography-body2 {
-    //   &:nth-of-type(2) {
-    //     font-size: 0.738rem;
-    //     font-weight: 300;
-    //     line-height: 1.1875em;
-    //   }
-    // }
   }
 
   .MuiAvatar-root {
@@ -63,6 +56,10 @@
   }
   .MuiAvatar-img {
     height: auto;
+  }
+
+  &-menu {
+    align-self: flex-end;
   }
 
   &.add {

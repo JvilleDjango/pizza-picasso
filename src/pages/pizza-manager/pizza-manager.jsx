@@ -5,6 +5,9 @@ import "./pizza-manager.styles.scss";
 import Cards from "../../components/card";
 
 import pizzaData from "../../api/pizzas/pizzas";
+import FormDialog from "../../components/modal/form.dialog";
+import Modal from "../../components/modal";
+
 import { Box, Tab, Tabs, Typography, Button, IconButton } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
@@ -40,11 +43,29 @@ function a11yProps(index) {
 
 const PizzaManager = () => {
   const [pizzas, setPizzas] = useState({});
-
   const [value, setValue] = useState(0);
+
+  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleAdd = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
   };
 
   useEffect(() => {
@@ -89,6 +110,7 @@ const PizzaManager = () => {
                   startIcon={<AddIcon />}
                   variant="contained"
                   disableElevation
+                   onClick={handleAdd}
                 >
                   Add
                 </Button>
@@ -107,11 +129,13 @@ const PizzaManager = () => {
               {pizzas[category].map((pizza, j) => (
                 <Cards data={pizza} key={j} />
               ))}
-              <Cards data={"Add"} />
+              <Cards data={"Add"} onClick={handleAdd} />
             </div>
           </CustomTabPanel>
         ))}
       </div>
+      <FormDialog open={open} onClose={handleClose} type="add pizza" />
+      <Modal open={openModal} onClose={handleCloseModal} />
     </section>
   );
 };
