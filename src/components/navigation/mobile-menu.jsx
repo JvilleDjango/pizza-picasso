@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MenuItem from "./components";
 import { IconButton, Drawer, List } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import "./navigation.styles.scss"
 
 const MobileMenu = ({ menu }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,11 +12,11 @@ const MobileMenu = ({ menu }) => {
   };
 
   return (
-    <nav className="helm">
+    <nav className="helm mobile">
       <IconButton onClick={toggleMenu} className="menu-button">
         <MenuIcon />
       </IconButton>
-      <Drawer anchor="left" open={isOpen} onClose={toggleMenu}>
+      <Drawer anchor="left" open={isOpen} onClose={toggleMenu} className="mobile-drawer">
         <List>
           {menu?.map((item, i) => (
             <MenuItem item={item} key={i} />

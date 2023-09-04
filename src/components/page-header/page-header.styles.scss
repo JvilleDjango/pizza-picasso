@@ -1,9 +1,8 @@
 .page-header {
-  flex-grow: 4;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 
   h4 {
     font-size: 1.4rem !important;
@@ -24,5 +23,34 @@
     color: var(--text-color);
   }
 
+  @media (max-width: 768px) {
+    width: 100%;
 
+    .mast-head .logo {
+      flex-direction: row;
+      svg {
+        margin-right: 10px
+      }
+    }
+
+    &-right {
+      display: none;
+    }
+
+    &-left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex: 2;
+
+      h4 {
+        font-size: 1rem !important;
+        font-family: "Cinzel Decorative";
+        margin-bottom: 0px;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
 }
