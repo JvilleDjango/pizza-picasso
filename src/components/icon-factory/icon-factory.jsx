@@ -8,9 +8,9 @@ import {
 
 function IconFactory({ iconName }) {
   const ICONS_MAP = {
-    fapizzaslice: <FontAwesomeIcon icon={faPizzaSlice} />,
-    fachartpie: <FontAwesomeIcon icon={faChartPie} />,
-    facheese: <FontAwesomeIcon icon={faCheese} />,
+    fapizzaslice: <FontAwesomeIcon icon={faPizzaSlice} aria-label="Pizza slice Icon" role="img"/>,
+    fachartpie: <FontAwesomeIcon icon={faChartPie} aria-label="Pizza Icon" role="img"/>,
+    facheese: <FontAwesomeIcon icon={faCheese} aria-label="Cheese Icon" role="img"/>,
   };
 
   const normalizedIconName = iconName?.toLowerCase();

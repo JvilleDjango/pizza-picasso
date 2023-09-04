@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <section className="mast-head">
       <div className="logo">
-        <FontAwesomeIcon icon={faPizzaSlice} />
+        <FontAwesomeIcon icon={faPizzaSlice} aria-label="Pizza Icon" role="img"/>
         <Typography variant="h1">Pizza Picasso</Typography>
       </div>
     </section>
