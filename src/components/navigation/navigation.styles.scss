@@ -1,6 +1,6 @@
 .helm {
   .MuiList-root {
-    padding: 10px;
+    // padding: 10px;
 
     .MuiTypography-root {
       font-size: 0.9rem;
@@ -16,9 +16,9 @@
       padding: 15px;
       transition: all 0.3s ease-in-out;
       
-      &:hover {
-        border-radius: 5px;
-      }
+      // &:hover {
+      //   border-radius: 5px;
+      // }
 
       .MuiListItemIcon-root {
         min-width: 0px;
@@ -37,7 +37,8 @@
 
   .active {
     background: rgba(62, 39, 35, 0.15);
-    border-radius: 5px;
+    // border-radius: 5px;
+    border-left: 5px solid var(--accent-color);
 
     .MuiButtonBase-root {
       .MuiListItemIcon-root {

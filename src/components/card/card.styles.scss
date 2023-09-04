@@ -30,8 +30,15 @@
       align-items: center;
       align-content: center;
       height: 100%;
+
       svg {
         fill: var(--accent-color);
+      }
+
+      .card-menu {
+        svg {
+          fill: var(--primary-color);
+        }
       }
     }
     &:hover {
@@ -53,9 +60,10 @@
   .MuiAvatar-root {
     width: 60px;
     height: 60px;
-  }
-  .MuiAvatar-img {
-    height: auto;
+
+    .MuiAvatar-img {
+      height: auto;
+    }
   }
 
   &-menu {

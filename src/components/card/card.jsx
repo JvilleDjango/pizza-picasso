@@ -8,95 +8,51 @@ import {
   CardContent,
   Typography,
   IconButton,
-  Menu,
-  MenuItem,
 } from "@mui/material/";
 
 import missingImage from "../../assets/pizza_placeholder.png";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const Cards = ({ data, onClick, onDelete }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const openMenu = Boolean(anchorEl);
-
-  const handleClick = (e) => {
-    e.stopPropagation();
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
-
-  const handleEdit = (e) => {
-    e.stopPropagation();
-    onClick("edit");
-    handleCloseMenu();
-  };
-
   const handleDelete = (e) => {
     e.stopPropagation();
-    onDelete("delete");
-    handleCloseMenu();
+    onDelete();
   };
 
   return (
-    <>
-      <Card className={`card ${data === "Add" ? "add" : ""}`} onClick={onClick}>
-        <CardActionArea>
-          {data !== "Add" ? (
-            <>
-              <IconButton
-                onClick={handleClick}
-                className="card-menu"
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={openMenu ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={openMenu ? "true" : undefined}
-              >
-                <MoreVertIcon />
-              </IconButton>
+    <Card className={`card ${data === "Add" ? "add" : ""}`} onClick={onClick}>
+      <CardActionArea>
+        {data !== "Add" ? (
+          <>
+            <IconButton
+              onClick={handleDelete}
+              className="card-menu"
+              size="small"
+              sx={{ ml: 2 }}
+            >
+              <DeleteOutlineIcon />
+            </IconButton>
 
-              <CardMedia
-                sx={{ height: 120 }}
-                image={missingImage}
-                title="toppings"
-                component="img"
-              />
-            </>
-          ) : (
-            <AddCircleIcon sx={{ fontSize: 60 }} color="primary" />
-          )}
+            <CardMedia
+              sx={{ height: 120 }}
+              image={missingImage}
+              title="toppings"
+              component="img"
+            />
+          </>
+        ) : (
+          <AddCircleIcon sx={{ fontSize: 60 }} color="primary" />
+        )}
 
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {data}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={openMenu}
-        onClose={handleCloseMenu}
-        onClick={handleCloseMenu}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <MenuItem onClick={handleEdit}>
-          <EditIcon /> Edit
-        </MenuItem>
-        <MenuItem onClick={handleDelete}>
-          <DeleteIcon /> Delete
-        </MenuItem>
-      </Menu>
-    </>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {data}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 

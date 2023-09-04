@@ -88,10 +88,15 @@ const PizzaManager = () => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Cheese Pizzas" {...a11yProps(0)} />
-            <Tab label="Meat Pizzas" {...a11yProps(1)} />
-            <Tab label="Veggie Pizzas" {...a11yProps(2)} />
-            <Tab label="Specialty Pizzas" {...a11yProps(3)} />
+            {["Cheese", "Meat", "Veggie", "Specialty"].map(
+              (category, index) => (
+                <Tab
+                  key={index}
+                  label={`${category} Pizzas`}
+                  {...a11yProps(index)}
+                />
+              )
+            )}
             <Tab
               icon={<AddIcon />}
               iconPosition="start"
