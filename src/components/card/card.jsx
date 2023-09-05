@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./card.styles.scss";
 
 import {
   Card,
   CardActionArea,
-  CardActions,
   CardMedia,
   CardContent,
   Typography,
@@ -18,8 +17,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const Cards = ({ data, onClick, onDelete }) => {
-  const cardRef = useRef(null);
-
   const handleDelete = (e) => {
     e.stopPropagation();
     onDelete();

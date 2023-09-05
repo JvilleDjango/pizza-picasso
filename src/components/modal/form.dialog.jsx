@@ -47,7 +47,7 @@ const FormDialog = ({ type, open, onClose }) => {
 
   useEffect(() => {
     toppingData && setToppings(toppingData);
-  }, [toppingData]);
+  }, []);
 
   return (
     <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>

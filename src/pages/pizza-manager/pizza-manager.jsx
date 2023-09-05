@@ -76,7 +76,7 @@ const PizzaManager = () => {
 
   useEffect(() => {
     pizzaData && setPizzas(pizzaData);
-  }, [pizzaData]);
+  }, []);
 
   return (
     <section className="pizza-manager">

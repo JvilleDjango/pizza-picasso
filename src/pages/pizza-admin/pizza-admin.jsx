@@ -75,7 +75,7 @@ const PizzaAdmin = () => {
 
   useEffect(() => {
     toppingData && setToppings(toppingData);
-  }, [toppingData]);
+  }, []);
 
   return (
     <section className="pizza-admin">

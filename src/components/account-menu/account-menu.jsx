@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./account-menu.styles.scss";
 import { NavLink } from "react-router-dom";
 
-import { Settings, Logout, ArrowDropDown } from "@mui/icons-material";
+import { Logout, ArrowDropDown } from "@mui/icons-material";
 
 import {
   Avatar,
