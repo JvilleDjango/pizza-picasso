@@ -7,8 +7,31 @@ export const app = express()
 
 app.use(express.json())
 
+const apiInfo = {
+  name: 'Pizza Picasso API',
+  version: '0.2.0',
+  endpoints: {
+    health: 'GET /api/health',
+    pizzas: 'GET /api/pizzas',
+    pizzaDetail: 'GET /api/pizzas/:name',
+    createPizza: 'POST /api/pizzas',
+    updatePizza: 'PATCH /api/pizzas',
+    toppings: 'GET /api/toppings',
+    createTopping: 'POST /api/toppings',
+    updateTopping: 'PATCH /api/toppings',
+  },
+}
+
+app.get('/', (_request, response) => {
+  response.json(apiInfo)
+})
+
+app.get('/api', (_request, response) => {
+  response.json(apiInfo)
+})
+
 app.get('/api/health', (_request, response) => {
-  response.json({ status: 'ok' })
+  response.json({ status: 'ok', service: apiInfo.name, version: apiInfo.version })
 })
 
 app.get('/api/pizzas', (_request, response) => {
