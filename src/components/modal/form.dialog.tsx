@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { X } from 'lucide-react'
 import { useEffect, useState, type FormEvent } from 'react'
 import { z } from 'zod'
-import { createPizza, updatePizza } from '../../features/pizzas/pizzas-api'
+import { createPizza, getPizzaDetail, updatePizza } from '../../features/pizzas/pizzas-api'
 import { createTopping, updateTopping, useToppings, type ToppingGroups } from '../../features/toppings'
 import './form.dialog.module.scss'
 
@@ -34,19 +34,33 @@ const FormDialog = ({ type, open, onClose, initialName = '', category }: FormDia
   const toppingEntries = Object.entries(toppings)
 
   useEffect(() => {
-    if (open) {
-      setName(isEdit ? initialName : '')
+    const controller = new AbortController()
+
+    if (!open) {
+      setName('')
       setImageName('')
       setSelectedToppings([])
       setError(null)
-      return
+      return () => controller.abort()
     }
 
-    setName('')
+    setName(isEdit ? initialName : '')
     setImageName('')
     setSelectedToppings([])
     setError(null)
-  }, [initialName, isEdit, open])
+
+    if (showToppings && isEdit && initialName) {
+      getPizzaDetail(initialName, controller.signal)
+        .then((detail) => setSelectedToppings(detail.toppings))
+        .catch((caughtError) => {
+          if (!controller.signal.aborted) {
+            setError(caughtError instanceof Error ? caughtError.message : 'Unable to load pizza details.')
+          }
+        })
+    }
+
+    return () => controller.abort()
+  }, [initialName, isEdit, open, showToppings])
 
   const toggleTopping = (topping: string) => {
     setSelectedToppings((current) =>
