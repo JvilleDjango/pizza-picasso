@@ -11,14 +11,23 @@ export interface PizzaUpdateInput extends PizzaMutationInput {
   originalName: string
 }
 
+export interface PizzaDetail {
+  name: string
+  toppings: string[]
+}
+
 export function getPizzas(signal?: AbortSignal) {
   return apiGet<PizzaGroups>('/api/pizzas', signal)
 }
 
+export function getPizzaDetail(name: string, signal?: AbortSignal) {
+  return apiGet<PizzaDetail>(`/api/pizzas/${encodeURIComponent(name)}`, signal)
+}
+
 export function createPizza(input: PizzaMutationInput) {
-  return apiPost<{ category: string; name: string }, PizzaMutationInput>('/api/pizzas', input)
+  return apiPost<{ category: string; name: string; toppings: string[] }, PizzaMutationInput>('/api/pizzas', input)
 }
 
 export function updatePizza(input: PizzaUpdateInput) {
-  return apiPatch<{ category: string; name: string }, PizzaUpdateInput>('/api/pizzas', input)
+  return apiPatch<{ category: string; name: string; toppings: string[] }, PizzaUpdateInput>('/api/pizzas', input)
 }
