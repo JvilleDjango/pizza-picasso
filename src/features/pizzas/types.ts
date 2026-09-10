@@ -1,0 +1,1 @@
+export type PizzaGroups = Record<string, string[]>

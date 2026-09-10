@@ -1,14 +1,17 @@
-import { StrictMode } from 'react'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import { RouterProvider } from 'react-router'
-import { AppProviders } from './app/AppProviders'
-import { router } from './app/router'
-import './styles/index.css'
+import App from './App'
+import { queryClient } from './app/query-client'
+import Spinner from './components/spinner'
+import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AppProviders>
-      <RouterProvider router={router} />
-    </AppProviders>
+    <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<Spinner />}>
+        <App />
+      </Suspense>
+    </QueryClientProvider>
   </StrictMode>,
 )

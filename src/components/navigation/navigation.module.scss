@@ -1,0 +1,119 @@
+.helm {
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-list-item {
+    margin-bottom: 0.4rem;
+  }
+
+  .menu-link {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    border-left: 5px solid transparent;
+    border-radius: 0 12px 12px 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu-link-content {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    gap: 0.55rem;
+    padding: 15px;
+  }
+
+  .menu-icon {
+    min-width: 0;
+
+    svg {
+      color: var(--text-color);
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .menu-label {
+    font-size: 0.9rem;
+  }
+
+  .menu-link.active {
+    background: rgba(62, 39, 35, 0.15);
+    border-left: 5px solid var(--accent-color);
+
+    .menu-icon {
+      svg {
+        color: var(--accent-color);
+      }
+    }
+  }
+
+  .mobile-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.55rem;
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(280px, 85vw);
+    background-color: var(--secondary-color);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.18);
+    padding: 1rem;
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-title {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .mobile-close {
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.35rem;
+  }
+
+  .menu-list--mobile {
+    .menu-link-content {
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
+
+  &.mobile {
+  }
+}

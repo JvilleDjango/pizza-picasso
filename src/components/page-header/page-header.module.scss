@@ -1,0 +1,58 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .page-title {
+    font-size: 1.4rem !important;
+    font-family: "Cinzel Decorative";
+    margin: 0;
+  }
+
+  .page-subtitle {
+    font-size: 0.875rem;
+    margin: 0.35rem 0 0;
+  }
+
+  .page-title,
+  .page-subtitle {
+    color: var(--text-color);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    .mast-head .logo {
+      flex-direction: row;
+      svg {
+        margin-right: 10px;
+      }
+
+      h1 {
+        font-size: 5vw;
+      }
+    }
+
+    &-right {
+      display: none;
+    }
+
+    &-left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex: 2;
+
+      .page-title {
+        font-size: 1rem !important;
+        font-family: "Cinzel Decorative";
+        margin-bottom: 0px;
+        text-align: center;
+      }
+      .page-subtitle {
+        display: none;
+      }
+    }
+  }
+}

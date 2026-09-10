@@ -1,0 +1,80 @@
+.user-account {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  .account-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.35rem 0.75rem;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(62, 39, 35, 0.12);
+      outline: none;
+    }
+
+    svg {
+      color: var(--text-color);
+    }
+  }
+
+  .account-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 1px solid rgba(30, 39, 46, 0.2);
+  }
+
+  .account-name {
+    color: var(--text-color);
+    padding-left: 0.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+.account-menu-content {
+  min-width: 12rem;
+  background: var(--secondary-color);
+  border: 1px solid rgba(30, 39, 46, 0.15);
+  border-radius: 14px;
+  padding: 0.35rem;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.18);
+}
+
+.account-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.7rem 0.8rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible,
+  &[data-highlighted] {
+    background: rgba(62, 39, 35, 0.12);
+    outline: none;
+  }
+}
+
+.account-menu-separator {
+  height: 1px;
+  background: rgba(30, 39, 46, 0.12);
+  margin: 0.35rem 0;
+}

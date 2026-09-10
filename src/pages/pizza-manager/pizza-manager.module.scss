@@ -1,0 +1,126 @@
+.pizza-manager {
+  &-navigation {
+    margin-bottom: 25px;
+
+    .tabs-toolbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tabs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tabs-trigger {
+      border: 0;
+      border-radius: 999px;
+      background: rgba(62, 39, 35, 0.08);
+      color: var(--text-color);
+      cursor: pointer;
+      font: inherit;
+      padding: 0.7rem 1rem;
+
+      &[data-state="active"] {
+        color: var(--primary-color);
+        background: rgba(62, 39, 35, 0.15);
+      }
+    }
+
+    .actions {
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background: rgba(62, 39, 35, 0.15);
+        border-radius: 5px;
+        margin-bottom: 15px;
+        padding: 10px;
+      }
+
+      &-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .primary-button {
+          margin-left: 15px;
+        }
+      }
+      &-left {
+        @media (max-width: 768px) {
+          flex: 1;
+        }
+      }
+    }
+  }
+
+  .tabs-content {
+    outline: none;
+  }
+
+  .icon-button,
+  .primary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(30, 39, 46, 0.15);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text-color);
+    cursor: pointer;
+    font: inherit;
+    padding: 0.65rem 0.95rem;
+  }
+
+  .primary-button {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+  }
+
+  .empty-state {
+    color: var(--secondary-color);
+  }
+
+  .pizza {
+    &-list {
+      header {
+        font-size: 1rem;
+        color: var(--text-color);
+        font-weight: bold;
+        letter-spacing: 0.095rem;
+        text-transform: uppercase;
+      }
+    }
+    &-grid {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(
+        auto-fill,
+        160px
+      ); /* Create columns that are 50px wide */
+      gap: 10px; /* Add a gap between columns */
+    }
+  }
+
+  @media (max-width: 768px) {
+    &-navigation {
+      .tabs-toolbar,
+      .actions-container {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .actions-right {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
