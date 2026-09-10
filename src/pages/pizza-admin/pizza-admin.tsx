@@ -28,13 +28,8 @@ const PizzaAdmin = () => {
     setDialogType('add topping')
   }
 
-  const handleCloseFormDialog = () => {
-    setOpenFormDialog(false)
-  }
-
-  const handleCloseModal = () => {
-    setOpenModal(false)
-  }
+  const handleCloseFormDialog = () => setOpenFormDialog(false)
+  const handleCloseModal = () => setOpenModal(false)
 
   const handleCardAction = (action: 'edit' | 'delete') => {
     if (action === 'edit') {
@@ -42,28 +37,22 @@ const PizzaAdmin = () => {
       setDialogType('edit topping')
       return
     }
-
     setOpenModal(true)
   }
 
-  if (isLoading) {
-    return (
-      <section className="pizza-admin">
-        <Spinner />
-      </section>
-    )
-  }
-
-  if (isError) {
-    return (
-      <section className="pizza-admin">
-        <p className="empty-state">We could not load toppings right now.</p>
-      </section>
-    )
-  }
+  if (isLoading) return <section className="pizza-admin"><Spinner /></section>
+  if (isError) return <section className="pizza-admin"><p className="empty-state">We could not load toppings right now.</p></section>
 
   return (
     <section className="pizza-admin">
+      <div className="manager-intro">
+        <p className="manager-eyebrow">Ingredient operations</p>
+        <div>
+          <h2>Topping library</h2>
+          <p>Maintain the ingredients your team can use when composing pizzas.</p>
+        </div>
+      </div>
+
       <div className="pizza-admin-navigation">
         <Tabs.Root value={activeCategory} onValueChange={setActiveCategory}>
           <div className="tabs-toolbar">
@@ -74,30 +63,19 @@ const PizzaAdmin = () => {
                 </Tabs.Trigger>
               ))}
             </Tabs.List>
-
             <button type="button" className="primary-button" onClick={handleAdd}>
               <Plus aria-hidden="true" />
-              <span>Add</span>
+              <span>Add topping</span>
             </button>
           </div>
 
           {categories.map((category) => (
             <Tabs.Content className="tabs-content toppings-list" key={category} value={category}>
               <div className="actions-container">
-                <div className="actions-left">
-                  <header>{category}</header>
-                </div>
+                <div className="actions-left"><header>{category}</header></div>
                 <div className="actions-right">
-                  <button type="button" className="icon-button" aria-label="View list">
-                    <List aria-hidden="true" />
-                  </button>
-                  <button type="button" className="icon-button" aria-label="View grid">
-                    <Grid2x2 aria-hidden="true" />
-                  </button>
-                  <button type="button" className="primary-button" onClick={handleAdd}>
-                    <Plus aria-hidden="true" />
-                    <span>Add</span>
-                  </button>
+                  <button type="button" className="icon-button" aria-label="View list"><List aria-hidden="true" /></button>
+                  <button type="button" className="icon-button" aria-label="View grid"><Grid2x2 aria-hidden="true" /></button>
                 </div>
               </div>
 
@@ -105,12 +83,13 @@ const PizzaAdmin = () => {
                 {toppings[category]?.map((topping) => (
                   <Cards
                     data={topping}
+                    variant="topping"
                     key={topping}
                     onClick={() => handleCardAction('edit')}
                     onDelete={() => handleCardAction('delete')}
                   />
                 ))}
-                <Cards data="Add" onClick={handleAdd} />
+                <Cards data="Add" variant="topping" onClick={handleAdd} />
               </div>
             </Tabs.Content>
           ))}
