@@ -16,6 +16,7 @@ const PizzaAdmin = () => {
   const [openFormDialog, setOpenFormDialog] = useState(false)
   const [openModal, setOpenModal] = useState(false)
   const [dialogType, setDialogType] = useState('')
+  const [selectedTopping, setSelectedTopping] = useState<string | null>(null)
 
   useEffect(() => {
     if (!activeCategory && categories[0]) {
@@ -24,19 +25,27 @@ const PizzaAdmin = () => {
   }, [activeCategory, categories])
 
   const handleAdd = () => {
-    setOpenFormDialog(true)
+    setSelectedTopping(null)
     setDialogType('add topping')
+    setOpenFormDialog(true)
   }
 
-  const handleCloseFormDialog = () => setOpenFormDialog(false)
+  const handleCloseFormDialog = () => {
+    setOpenFormDialog(false)
+    setSelectedTopping(null)
+  }
+
   const handleCloseModal = () => setOpenModal(false)
 
-  const handleCardAction = (action: 'edit' | 'delete') => {
+  const handleCardAction = (action: 'edit' | 'delete', topping: string) => {
     if (action === 'edit') {
-      setOpenFormDialog(true)
+      setSelectedTopping(topping)
       setDialogType('edit topping')
+      setOpenFormDialog(true)
       return
     }
+
+    setSelectedTopping(topping)
     setOpenModal(true)
   }
 
@@ -85,8 +94,8 @@ const PizzaAdmin = () => {
                     data={topping}
                     variant="topping"
                     key={topping}
-                    onClick={() => handleCardAction('edit')}
-                    onDelete={() => handleCardAction('delete')}
+                    onClick={() => handleCardAction('edit', topping)}
+                    onDelete={() => handleCardAction('delete', topping)}
                   />
                 ))}
                 <Cards data="Add" variant="topping" onClick={handleAdd} />
@@ -96,7 +105,13 @@ const PizzaAdmin = () => {
         </Tabs.Root>
       </div>
 
-      <FormDialog open={openFormDialog} onClose={handleCloseFormDialog} type={dialogType} />
+      <FormDialog
+        open={openFormDialog}
+        onClose={handleCloseFormDialog}
+        type={dialogType}
+        initialName={selectedTopping ?? ''}
+        category={activeCategory}
+      />
       <Modal open={openModal} onClose={handleCloseModal} />
     </section>
   )
