@@ -67,80 +67,77 @@
   .pizza-visual {
     width: 100%;
     height: 138px;
-    border: 1px solid color-mix(in srgb, var(--char) 10%, transparent);
-    background:
-      linear-gradient(145deg, color-mix(in srgb, var(--dough) 74%, white), var(--flour));
-  }
-
-  .ingredient-visual {
     display: grid;
     place-items: center;
-    font-size: 3.75rem;
-
-    span {
-      filter: saturate(.9);
-      transform: translateY(-2px);
-    }
-  }
-
-  .pizza-visual {
-    position: relative;
     overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--char) 9%, transparent);
+    background: color-mix(in srgb, var(--dough) 38%, var(--flour));
   }
 
-  .pizza-visual::before {
-    content: '';
-    position: absolute;
-    width: 104px;
-    aspect-ratio: 1;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    border-radius: 50%;
-    border: 8px solid #d6a55c;
-    background:
-      radial-gradient(circle at 38% 32%, #fff5d7 0 8%, transparent 9%),
-      radial-gradient(circle at 65% 64%, #fff0c8 0 9%, transparent 10%),
-      #e4b86c;
-    box-shadow: inset 0 0 0 4px rgba(201, 71, 54, .08), 0 10px 22px rgba(36, 33, 29, .12);
+  .ingredient-art,
+  .pizza-art {
+    width: min(92%, 180px);
+    height: 112px;
+    overflow: visible;
   }
 
-  .pizza-slice,
-  .pizza-herb {
-    position: absolute;
-    z-index: 2;
-    border-radius: 50%;
-    pointer-events: none;
+  .ingredient-art *,
+  .pizza-art * {
+    vector-effect: non-scaling-stroke;
   }
 
-  .pizza-slice {
-    width: 15px;
-    height: 15px;
-    background: var(--tomato);
-    box-shadow: inset 0 0 0 2px rgba(168, 56, 50, .32);
-  }
+  /* Ingredient palette — flat, restrained, food-specific. */
+  .fill-meat-red { fill: #b94b3f; }
+  .fill-meat-dark { fill: #7f342f; }
+  .fill-sausage { fill: #9d604b; }
+  .fill-bacon { fill: #b95549; }
+  .stroke-bacon-fat { fill: none; stroke: #f0c4ad; stroke-width: 6; stroke-linecap: round; }
+  .fill-beef { fill: #805246; }
+  .stroke-meat-detail { fill: none; stroke: #5f3e37; stroke-width: 2; stroke-linecap: round; }
+  .fill-ham { fill: #c87b72; }
+  .stroke-ham-detail { fill: none; stroke: #f0b3aa; stroke-width: 2; stroke-linecap: round; }
+  .fill-cheese { fill: #e7c86f; }
+  .fill-cheese-hole { fill: #caa856; }
+  .fill-tomato { fill: var(--tomato); }
+  .fill-basil { fill: var(--basil); }
+  .fill-basil-light { fill: #6f8a68; }
+  .stroke-leaf { fill: none; stroke: #355139; stroke-width: 2; stroke-linecap: round; }
+  .fill-mushroom-cap { fill: #bba88f; }
+  .fill-mushroom-stem { fill: #e8ddcb; }
+  .stroke-mushroom { fill: none; stroke: #8e7c68; stroke-width: 2; stroke-linecap: round; }
+  .fill-pepper-red { fill: #c95142; }
+  .fill-pepper-yellow { fill: #d9aa45; }
+  .stroke-stem { fill: none; stroke: var(--basil); stroke-width: 4; stroke-linecap: round; }
+  .fill-olive { fill: #4b5840; }
+  .fill-olive-hole { fill: var(--flour); }
+  .fill-onion { fill: #b7839f; }
+  .stroke-onion { fill: none; stroke: #8f627e; stroke-width: 2; stroke-linecap: round; }
+  .fill-pineapple { fill: #d9ad42; }
+  .stroke-pineapple-leaf { fill: none; stroke: var(--basil); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .stroke-pineapple-detail { fill: none; stroke: #b5862d; stroke-width: 2; stroke-linecap: round; }
+  .fill-chicken { fill: #c58c62; }
+  .stroke-chicken-detail { fill: none; stroke: #9b6b4b; stroke-width: 2; stroke-linecap: round; }
+  .fill-generic { fill: var(--dough); stroke: color-mix(in srgb, var(--char) 28%, transparent); stroke-width: 2; }
+  .fill-generic-center { fill: var(--basil); }
 
-  .pizza-slice--one { left: 34%; top: 35%; }
-  .pizza-slice--two { left: 56%; top: 48%; }
-  .pizza-slice--three { left: 44%; top: 64%; }
-
-  .pizza-herb {
-    width: 12px;
-    height: 7px;
-    border-radius: 100% 0 100% 0;
-    background: var(--basil);
-    transform: rotate(28deg);
-  }
-
-  .pizza-herb--one { left: 57%; top: 31%; }
-  .pizza-herb--two { left: 38%; top: 54%; transform: rotate(-25deg); }
-
-  .pizza-visual--four-cheese .pizza-slice { display: none; }
-  .pizza-visual--four-cheese .pizza-herb { background: #d8b765; opacity: .75; }
-  .pizza-visual--margherita .pizza-slice--three { display: none; }
-  .pizza-visual--veggie .pizza-slice { background: var(--basil); box-shadow: none; }
-  .pizza-visual--hawaiian .pizza-slice { background: #e8bb4f; box-shadow: none; }
-  .pizza-visual--pepperoni .pizza-herb { display: none; }
+  /* Pizza palette — top-down, graphic, and intentionally flat. */
+  .pizza-crust { fill: #d4a45f; }
+  .pizza-sauce { fill: #b64a3d; }
+  .pizza-cheese { fill: #ecd889; }
+  .pizza-pepperoni { fill: #a84338; }
+  .pizza-sausage { fill: #8d5a45; }
+  .pizza-beef { fill: #725044; }
+  .pizza-basil { fill: var(--basil); }
+  .pizza-tomato { fill: var(--tomato); }
+  .pizza-cheese-dot--one { fill: #fff0b3; }
+  .pizza-cheese-dot--two { fill: #e7bd57; }
+  .pizza-cheese-dot--three { fill: #d5a84a; }
+  .pizza-cheese-dot--four { fill: #f4e4ad; }
+  .pizza-pepper-green { fill: #6f844f; }
+  .pizza-pepper-red { fill: #bb5544; }
+  .pizza-mushroom { fill: #a9977f; }
+  .pizza-pineapple { fill: #d9ad42; }
+  .pizza-ham { fill: #c47b72; }
 
   .card-add-icon {
     width: 42px;
