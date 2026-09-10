@@ -1,50 +1,45 @@
 .mast-head {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  color: #fff;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: .5rem .35rem 2rem;
+  border-bottom: 1px solid rgba(244,234,216,.14);
 
-  padding: 20px;
+  .brand-mark {
+    width: 48px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(244,234,216,.25);
+    color: var(--tomato);
 
-  .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 85px;
-    img {
-      height: auto;
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 1.75rem;
-    }
-
-    svg {
-      height: 45px;
-      margin-bottom: 15px;
-    }
-
-    h1,
-    svg {
-      color: var(--primary-color);
-    }
+    svg { width: 24px; height: 24px; }
   }
 
-  @media (max-width: 768px) {
-    padding: 5px;
-    width: 100%;
+  .logo { min-width: 0; }
+  .brand-kicker {
+    display: block;
+    margin-bottom: .55rem;
+    color: rgba(251,246,236,.52);
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
 
-    .logo {
-      width: 100%;
+  h1 {
+    margin: 0;
+    color: var(--paper-soft);
+    font-size: clamp(1.65rem, 2.2vw, 2.15rem);
+    line-height: .95;
+    letter-spacing: -.045em;
+  }
 
-      svg {
-        height: 25px;
-        margin-bottom: 0px;
-      }
-    }
+  p {
+    margin: .7rem 0 0;
+    color: rgba(251,246,236,.62);
+    font-size: .78rem;
+    line-height: 1.4;
   }
 }
