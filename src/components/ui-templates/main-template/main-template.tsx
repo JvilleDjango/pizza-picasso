@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Outlet } from 'react-router'
 import type { NavigationItem } from '../../../configs/template.config'
+import AccountMenu from '../../account-menu'
 import Navigation from '../../navigation'
 import PageHeader from '../../page-header'
 import Header from '../../header'
@@ -22,10 +23,15 @@ const MainTemplate = ({ navigation, children = null }: MainTemplateProps) => {
       <aside className="left-content sub-navigation">
         <Header />
         <Navigation menu={navigation} />
+        <div className="sidebar-account">
+          <span className="sidebar-account-label">Account</span>
+          <AccountMenu />
+        </div>
       </aside>
-      <aside className="right-content">
+
+      <main className="right-content">
         <Outlet />
-      </aside>
+      </main>
     </section>
   )
 }
