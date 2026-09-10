@@ -16,6 +16,7 @@ const PizzaManager = () => {
   const [openFormDialog, setOpenFormDialog] = useState(false)
   const [openModal, setOpenModal] = useState(false)
   const [dialogType, setDialogType] = useState('')
+  const [selectedPizza, setSelectedPizza] = useState<string | null>(null)
 
   useEffect(() => {
     if (!activeCategory && categories[0]) {
@@ -24,19 +25,27 @@ const PizzaManager = () => {
   }, [activeCategory, categories])
 
   const handleAdd = () => {
-    setOpenFormDialog(true)
+    setSelectedPizza(null)
     setDialogType('add pizza')
+    setOpenFormDialog(true)
   }
 
-  const handleCloseFormDialog = () => setOpenFormDialog(false)
+  const handleCloseFormDialog = () => {
+    setOpenFormDialog(false)
+    setSelectedPizza(null)
+  }
+
   const handleCloseModal = () => setOpenModal(false)
 
-  const handleCardAction = (action: 'edit' | 'delete') => {
+  const handleCardAction = (action: 'edit' | 'delete', pizza: string) => {
     if (action === 'edit') {
-      setOpenFormDialog(true)
+      setSelectedPizza(pizza)
       setDialogType('edit pizza')
+      setOpenFormDialog(true)
       return
     }
+
+    setSelectedPizza(pizza)
     setOpenModal(true)
   }
 
@@ -85,8 +94,8 @@ const PizzaManager = () => {
                     data={pizza}
                     variant="pizza"
                     key={pizza}
-                    onClick={() => handleCardAction('edit')}
-                    onDelete={() => handleCardAction('delete')}
+                    onClick={() => handleCardAction('edit', pizza)}
+                    onDelete={() => handleCardAction('delete', pizza)}
                   />
                 ))}
                 <Cards data="Add" variant="pizza" onClick={handleAdd} />
@@ -96,7 +105,12 @@ const PizzaManager = () => {
         </Tabs.Root>
       </div>
 
-      <FormDialog open={openFormDialog} onClose={handleCloseFormDialog} type={dialogType} />
+      <FormDialog
+        open={openFormDialog}
+        onClose={handleCloseFormDialog}
+        type={dialogType}
+        initialName={selectedPizza ?? ''}
+      />
       <Modal open={openModal} onClose={handleCloseModal} />
     </section>
   )
