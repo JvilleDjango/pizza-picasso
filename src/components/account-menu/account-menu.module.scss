@@ -1,80 +1,83 @@
 .user-account {
-  color: var(--text-color);
   display: flex;
   align-items: center;
-  text-align: center;
+  color: var(--flour);
 
   .account-button {
+    width: 100%;
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    color: var(--text-color);
+    gap: .7rem;
+    border: 1px solid rgba(255, 249, 236, .1);
+    border-radius: 10px;
+    background: rgba(255, 249, 236, .035);
+    color: var(--flour);
     cursor: pointer;
-    padding: 0.35rem 0.75rem;
-    transition: background-color 0.2s ease-in-out;
+    padding: .55rem .65rem;
+    transition: background-color .2s ease, border-color .2s ease;
 
     &:hover,
     &:focus-visible {
-      background: rgba(62, 39, 35, 0.12);
+      background: color-mix(in srgb, var(--basil) 16%, transparent);
+      border-color: color-mix(in srgb, var(--basil) 52%, transparent);
       outline: none;
     }
 
-    svg {
-      color: var(--text-color);
-    }
+    svg { color: var(--flour); }
   }
 
   .account-avatar {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 999px;
     object-fit: cover;
-    border: 1px solid rgba(30, 39, 46, 0.2);
+    border: 1px solid rgba(255, 249, 236, .18);
   }
 
   .account-name {
-    color: var(--text-color);
-    padding-left: 0.2rem;
-    font-size: 0.95rem;
+    min-width: 0;
+    color: var(--flour);
+    font-size: .82rem;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .account-menu-content {
   min-width: 12rem;
-  background: var(--secondary-color);
-  border: 1px solid rgba(30, 39, 46, 0.15);
-  border-radius: 14px;
-  padding: 0.35rem;
-  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.18);
+  background: var(--flour);
+  border: 1px solid color-mix(in srgb, var(--char) 14%, transparent);
+  border-radius: 12px;
+  padding: .35rem;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, .28);
 }
 
 .account-menu-item {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: .65rem;
   width: 100%;
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   background: transparent;
-  color: var(--text-color);
+  color: var(--char);
   cursor: pointer;
   font: inherit;
-  padding: 0.7rem 0.8rem;
+  padding: .7rem .8rem;
   text-decoration: none;
 
   &:hover,
   &:focus-visible,
   &[data-highlighted] {
-    background: rgba(62, 39, 35, 0.12);
+    background: color-mix(in srgb, var(--dough) 62%, white);
     outline: none;
   }
 }
 
 .account-menu-separator {
   height: 1px;
-  background: rgba(30, 39, 46, 0.12);
-  margin: 0.35rem 0;
+  background: color-mix(in srgb, var(--char) 12%, transparent);
+  margin: .35rem 0;
 }
