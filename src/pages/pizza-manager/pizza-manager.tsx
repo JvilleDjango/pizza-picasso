@@ -110,6 +110,7 @@ const PizzaManager = () => {
         onClose={handleCloseFormDialog}
         type={dialogType}
         initialName={selectedPizza ?? ''}
+        category={activeCategory}
       />
       <Modal open={openModal} onClose={handleCloseModal} />
     </section>
