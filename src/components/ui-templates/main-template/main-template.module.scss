@@ -2,65 +2,56 @@
   position: relative;
   display: grid;
   grid-template-areas:
-    "menu header header"
-    "menu main main";
-  column-gap: 10px;
-  row-gap: 10px;
-  grid-template-columns: 150px 1fr;
-  height: calc(100vh - 20px);
-  grid-template-rows: auto 1fr;
+    "menu header"
+    "menu main";
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 100vh;
+  background: transparent;
 
   .header-content {
     grid-area: header;
-    justify-content: space-between;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 20;
     display: flex;
     align-items: center;
-    column-gap: 19px;
-    padding: 0.625rem;
+    justify-content: space-between;
+    min-height: 88px;
+    padding: 1.25rem clamp(1.5rem, 3vw, 3rem);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(18px);
   }
 
   .left-content {
     grid-area: menu;
-    text-align: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(244, 234, 216, .12);
+    background: var(--char);
+    color: var(--paper-soft);
   }
 
   .right-content {
     grid-area: main;
-    padding: 10px;
-    overflow: hidden;
+    min-width: 0;
     overflow-y: auto;
+    padding: clamp(1.5rem, 3vw, 3.5rem);
   }
 
-  .footer {
-    grid-area: footer;
-  }
+  .sub-navigation { padding: 1.5rem 1rem 2rem; }
 
-  .left-content,
-  .right-content,
-  .header-content {
-    background-color: var(--secondary-color);
-    border-radius: 5px;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-areas:
-      "header"
-      "main";
+  @media (max-width: 900px) {
+    grid-template-areas: "header" "main";
     grid-template-columns: 1fr;
-    height: auto;
+    min-height: 100vh;
 
-    .left-content,
-    .right-content {
-      padding: 1rem;
-    }
-
-    .header-content {
-      padding: 0.4rem;
-    }
-
-    .left-content {
-      display: none;
-    }
+    .left-content { display: none; }
+    .header-content { min-height: 72px; padding: 1rem 1.25rem; }
+    .right-content { padding: 1.25rem; }
   }
 }
