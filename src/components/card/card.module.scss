@@ -2,26 +2,35 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 240px;
+  min-height: 250px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0;
-  background: color-mix(in srgb, var(--paper-soft) 88%, white);
-  box-shadow: none;
+  border: 1px solid color-mix(in srgb, var(--char) 14%, transparent);
+  border-radius: 14px;
+  background: var(--flour);
+  box-shadow: 0 10px 28px rgba(36, 33, 29, 0.08);
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 
   &:hover {
     transform: translateY(-3px);
-    border-color: var(--line-strong);
-    box-shadow: var(--shadow-soft);
+    border-color: color-mix(in srgb, var(--tomato) 42%, var(--char));
+    box-shadow: 0 18px 38px rgba(36, 33, 29, 0.14);
     cursor: pointer;
   }
 
   .card-header {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
     min-height: 42px;
-    padding: .6rem .6rem 0;
+    padding: .7rem .8rem 0;
+  }
+
+  .card-kind {
+    color: var(--char-soft);
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
 
   .card-menu {
@@ -30,8 +39,9 @@
     width: 34px;
     aspect-ratio: 1;
     border: 1px solid transparent;
+    border-radius: 999px;
     background: transparent;
-    color: var(--ink-soft);
+    color: var(--char-soft);
     cursor: pointer;
     padding: 0;
 
@@ -49,17 +59,88 @@
     border: 0;
     background: transparent;
     cursor: pointer;
-    padding: .25rem 1rem 1.25rem;
+    padding: .3rem 1rem 1.15rem;
     text-align: left;
   }
 
-  .card-image {
+  .ingredient-visual,
+  .pizza-visual {
     width: 100%;
-    height: 132px;
-    object-fit: cover;
-    border-radius: 0;
-    filter: saturate(.9) contrast(1.02);
+    height: 138px;
+    border: 1px solid color-mix(in srgb, var(--char) 10%, transparent);
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--dough) 74%, white), var(--flour));
   }
+
+  .ingredient-visual {
+    display: grid;
+    place-items: center;
+    font-size: 3.75rem;
+
+    span {
+      filter: saturate(.9);
+      transform: translateY(-2px);
+    }
+  }
+
+  .pizza-visual {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pizza-visual::before {
+    content: '';
+    position: absolute;
+    width: 104px;
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    border: 8px solid #d6a55c;
+    background:
+      radial-gradient(circle at 38% 32%, #fff5d7 0 8%, transparent 9%),
+      radial-gradient(circle at 65% 64%, #fff0c8 0 9%, transparent 10%),
+      #e4b86c;
+    box-shadow: inset 0 0 0 4px rgba(201, 71, 54, .08), 0 10px 22px rgba(36, 33, 29, .12);
+  }
+
+  .pizza-slice,
+  .pizza-herb {
+    position: absolute;
+    z-index: 2;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .pizza-slice {
+    width: 15px;
+    height: 15px;
+    background: var(--tomato);
+    box-shadow: inset 0 0 0 2px rgba(168, 56, 50, .32);
+  }
+
+  .pizza-slice--one { left: 34%; top: 35%; }
+  .pizza-slice--two { left: 56%; top: 48%; }
+  .pizza-slice--three { left: 44%; top: 64%; }
+
+  .pizza-herb {
+    width: 12px;
+    height: 7px;
+    border-radius: 100% 0 100% 0;
+    background: var(--basil);
+    transform: rotate(28deg);
+  }
+
+  .pizza-herb--one { left: 57%; top: 31%; }
+  .pizza-herb--two { left: 38%; top: 54%; transform: rotate(-25deg); }
+
+  .pizza-visual--four-cheese .pizza-slice { display: none; }
+  .pizza-visual--four-cheese .pizza-herb { background: #d8b765; opacity: .75; }
+  .pizza-visual--margherita .pizza-slice--three { display: none; }
+  .pizza-visual--veggie .pizza-slice { background: var(--basil); box-shadow: none; }
+  .pizza-visual--hawaiian .pizza-slice { background: #e8bb4f; box-shadow: none; }
+  .pizza-visual--pepperoni .pizza-herb { display: none; }
 
   .card-add-icon {
     width: 42px;
@@ -72,7 +153,7 @@
 
   .card-title {
     margin: 0;
-    color: var(--ink);
+    color: var(--char);
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.15rem;
     font-weight: 500;
@@ -80,12 +161,22 @@
     letter-spacing: -.025em;
   }
 
+  .card-edit-hint {
+    display: inline-block;
+    margin-top: .45rem;
+    color: var(--char-soft);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
   &.add {
     border-style: dashed;
-    background: transparent;
+    background: color-mix(in srgb, var(--flour) 75%, transparent);
 
-    .card-action { min-height: 238px; justify-content: center; align-items: center; text-align: center; }
+    .card-action { min-height: 248px; justify-content: center; align-items: center; text-align: center; }
     .card-content { text-align: center; }
-    &:hover { background: rgba(184,69,47,.04); box-shadow: none; }
+    &:hover { background: color-mix(in srgb, var(--tomato) 5%, var(--flour)); box-shadow: none; }
   }
 }
