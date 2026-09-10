@@ -1,27 +1,13 @@
 .main-template {
   position: relative;
   display: grid;
-  grid-template-areas:
-    "menu header"
-    "menu main";
-  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "menu main";
+  grid-template-columns: minmax(220px, 248px) minmax(0, 1fr);
   min-height: 100vh;
-  background: transparent;
+  background: var(--char);
 
   .header-content {
-    grid-area: header;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 88px;
-    padding: 1.25rem clamp(1.5rem, 3vw, 3rem);
-    border-bottom: 1px solid var(--line);
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(18px);
+    display: none;
   }
 
   .left-content {
@@ -31,27 +17,62 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgba(244, 234, 216, .12);
+    border-right: 1px solid rgba(255, 249, 236, .1);
     background: var(--char);
-    color: var(--paper-soft);
+    color: var(--flour);
   }
 
   .right-content {
     grid-area: main;
     min-width: 0;
+    min-height: 100vh;
     overflow-y: auto;
-    padding: clamp(1.5rem, 3vw, 3.5rem);
+    padding: clamp(1.5rem, 3vw, 3.25rem);
+    background:
+      radial-gradient(circle at 85% 0%, rgba(79, 111, 82, .09), transparent 28rem),
+      radial-gradient(circle at 20% 20%, rgba(201, 71, 54, .07), transparent 32rem),
+      var(--char);
   }
 
-  .sub-navigation { padding: 1.5rem 1rem 2rem; }
+  .sub-navigation { padding: 1.35rem 1rem 1rem; }
+
+  .sidebar-account {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 249, 236, .1);
+  }
+
+  .sidebar-account-label {
+    display: block;
+    margin: 0 .75rem .55rem;
+    color: rgba(255, 249, 236, .48);
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
 
   @media (max-width: 900px) {
     grid-template-areas: "header" "main";
     grid-template-columns: 1fr;
-    min-height: 100vh;
+    grid-template-rows: auto 1fr;
 
     .left-content { display: none; }
-    .header-content { min-height: 72px; padding: 1rem 1.25rem; }
+
+    .header-content {
+      grid-area: header;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      min-height: 64px;
+      padding: .75rem 1rem;
+      border-bottom: 1px solid rgba(255, 249, 236, .1);
+      background: color-mix(in srgb, var(--char) 94%, transparent);
+      backdrop-filter: blur(16px);
+    }
+
     .right-content { padding: 1.25rem; }
   }
 }
