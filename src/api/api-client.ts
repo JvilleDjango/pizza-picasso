@@ -8,15 +8,20 @@ export class ApiClientError extends Error {
   }
 }
 
-async function parseResponse<T>(response: Response): Promise<T> {
+async function parseResponse<T>(response: Response, requestLabel: string): Promise<T> {
   if (!response.ok) {
     const body = (await response.json().catch(() => null)) as
       | { error?: { message?: string } }
       | null
 
+    const fallbackMessage =
+      response.status === 404
+        ? `${requestLabel} is not available on the running API. Restart the Pizza Picasso dev server so it loads the latest routes.`
+        : "We couldn't complete that request."
+
     throw new ApiClientError(
       response.status,
-      body?.error?.message ?? "We couldn't complete that request.",
+      body?.error?.message ?? fallbackMessage,
     )
   }
 
@@ -25,7 +30,7 @@ async function parseResponse<T>(response: Response): Promise<T> {
 
 export async function apiGet<T>(path: string, signal?: AbortSignal): Promise<T> {
   const response = await fetch(path, { signal })
-  return parseResponse<T>(response)
+  return parseResponse<T>(response, `GET ${path}`)
 }
 
 export async function apiPost<TResponse, TBody>(path: string, body: TBody): Promise<TResponse> {
@@ -34,7 +39,7 @@ export async function apiPost<TResponse, TBody>(path: string, body: TBody): Prom
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
-  return parseResponse<TResponse>(response)
+  return parseResponse<TResponse>(response, `POST ${path}`)
 }
 
 export async function apiPatch<TResponse, TBody>(path: string, body: TBody): Promise<TResponse> {
@@ -43,5 +48,5 @@ export async function apiPatch<TResponse, TBody>(path: string, body: TBody): Pro
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
-  return parseResponse<TResponse>(response)
+  return parseResponse<TResponse>(response, `PATCH ${path}`)
 }
