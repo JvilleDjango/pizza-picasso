@@ -1,45 +1,48 @@
 .mast-head {
   display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 1rem;
-  align-items: start;
-  padding: .5rem .35rem 2rem;
-  border-bottom: 1px solid rgba(244,234,216,.14);
+  grid-template-columns: 38px 1fr;
+  gap: .75rem;
+  align-items: center;
+  padding: .2rem .35rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 249, 236, .1);
 
   .brand-mark {
-    width: 48px;
+    width: 36px;
     aspect-ratio: 1;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(244,234,216,.25);
+    border: 1px solid color-mix(in srgb, var(--tomato) 62%, transparent);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--tomato) 10%, transparent);
     color: var(--tomato);
 
-    svg { width: 24px; height: 24px; }
+    svg { width: 19px; height: 19px; }
   }
 
   .logo { min-width: 0; }
+
   .brand-kicker {
     display: block;
-    margin-bottom: .55rem;
-    color: rgba(251,246,236,.52);
-    font-size: .58rem;
+    margin-bottom: .28rem;
+    color: rgba(255, 249, 236, .45);
+    font-size: .52rem;
     font-weight: 800;
-    letter-spacing: .16em;
+    letter-spacing: .13em;
     text-transform: uppercase;
   }
 
   h1 {
     margin: 0;
-    color: var(--paper-soft);
-    font-size: clamp(1.65rem, 2.2vw, 2.15rem);
-    line-height: .95;
-    letter-spacing: -.045em;
+    color: var(--flour);
+    font-size: 1.25rem;
+    line-height: 1;
+    letter-spacing: -.035em;
   }
 
   p {
-    margin: .7rem 0 0;
-    color: rgba(251,246,236,.62);
-    font-size: .78rem;
-    line-height: 1.4;
+    margin: .35rem 0 0;
+    color: rgba(255, 249, 236, .55);
+    font-size: .68rem;
+    line-height: 1.35;
   }
 }
