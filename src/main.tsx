@@ -5,6 +5,7 @@ import App from './App'
 import { queryClient } from './app/query-client'
 import Spinner from './components/spinner'
 import './index.css'
+import './styles/app.scss'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
