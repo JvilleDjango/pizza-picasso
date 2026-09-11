@@ -1,0 +1,12 @@
+{
+  "name": "pizza-picasso-functions",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "firebase-functions": "^6.4.0"
+  }
+}
