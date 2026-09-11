@@ -1,0 +1,1 @@
+export type ToppingGroups = Record<string, string[]>

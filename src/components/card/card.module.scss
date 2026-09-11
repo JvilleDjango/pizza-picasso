@@ -1,0 +1,179 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--char) 14%, transparent);
+  border-radius: 14px;
+  background: var(--flour);
+  box-shadow: 0 10px 28px rgba(36, 33, 29, 0.08);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--tomato) 42%, var(--char));
+    box-shadow: 0 18px 38px rgba(36, 33, 29, 0.14);
+    cursor: pointer;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 42px;
+    padding: .7rem .8rem 0;
+  }
+
+  .card-kind {
+    color: var(--char-soft);
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .card-menu {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    aspect-ratio: 1;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--char-soft);
+    cursor: pointer;
+    padding: 0;
+
+    &:hover { border-color: var(--line); color: var(--tomato); }
+    svg { width: 1rem; height: 1rem; }
+  }
+
+  .card-action {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: .3rem 1rem 1.15rem;
+    text-align: left;
+  }
+
+  .ingredient-visual,
+  .pizza-visual {
+    width: 100%;
+    height: 138px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--char) 9%, transparent);
+    background: color-mix(in srgb, var(--dough) 38%, var(--flour));
+  }
+
+  .ingredient-art,
+  .pizza-art {
+    width: min(92%, 180px);
+    height: 112px;
+    overflow: visible;
+  }
+
+  .ingredient-art *,
+  .pizza-art * {
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Ingredient palette — flat, restrained, food-specific. */
+  .fill-meat-red { fill: #b94b3f; }
+  .fill-meat-dark { fill: #7f342f; }
+  .fill-sausage { fill: #9d604b; }
+  .fill-bacon { fill: #b95549; }
+  .stroke-bacon-fat { fill: none; stroke: #f0c4ad; stroke-width: 6; stroke-linecap: round; }
+  .fill-beef { fill: #805246; }
+  .stroke-meat-detail { fill: none; stroke: #5f3e37; stroke-width: 2; stroke-linecap: round; }
+  .fill-ham { fill: #c87b72; }
+  .stroke-ham-detail { fill: none; stroke: #f0b3aa; stroke-width: 2; stroke-linecap: round; }
+  .fill-cheese { fill: #e7c86f; }
+  .fill-cheese-hole { fill: #caa856; }
+  .fill-tomato { fill: var(--tomato); }
+  .fill-basil { fill: var(--basil); }
+  .fill-basil-light { fill: #6f8a68; }
+  .stroke-leaf { fill: none; stroke: #355139; stroke-width: 2; stroke-linecap: round; }
+  .fill-mushroom-cap { fill: #bba88f; }
+  .fill-mushroom-stem { fill: #e8ddcb; }
+  .stroke-mushroom { fill: none; stroke: #8e7c68; stroke-width: 2; stroke-linecap: round; }
+  .fill-pepper-red { fill: #c95142; }
+  .fill-pepper-yellow { fill: #d9aa45; }
+  .stroke-stem { fill: none; stroke: var(--basil); stroke-width: 4; stroke-linecap: round; }
+  .fill-olive { fill: #4b5840; }
+  .fill-olive-hole { fill: var(--flour); }
+  .fill-onion { fill: #b7839f; }
+  .stroke-onion { fill: none; stroke: #8f627e; stroke-width: 2; stroke-linecap: round; }
+  .fill-pineapple { fill: #d9ad42; }
+  .stroke-pineapple-leaf { fill: none; stroke: var(--basil); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .stroke-pineapple-detail { fill: none; stroke: #b5862d; stroke-width: 2; stroke-linecap: round; }
+  .fill-chicken { fill: #c58c62; }
+  .stroke-chicken-detail { fill: none; stroke: #9b6b4b; stroke-width: 2; stroke-linecap: round; }
+  .fill-generic { fill: var(--dough); stroke: color-mix(in srgb, var(--char) 28%, transparent); stroke-width: 2; }
+  .fill-generic-center { fill: var(--basil); }
+
+  /* Pizza palette — top-down, graphic, and intentionally flat. */
+  .pizza-crust { fill: #d4a45f; }
+  .pizza-sauce { fill: #b64a3d; }
+  .pizza-cheese { fill: #ecd889; }
+  .pizza-pepperoni { fill: #a84338; }
+  .pizza-sausage { fill: #8d5a45; }
+  .pizza-beef { fill: #725044; }
+  .pizza-basil { fill: var(--basil); }
+  .pizza-tomato { fill: var(--tomato); }
+  .pizza-cheese-dot--one { fill: #fff0b3; }
+  .pizza-cheese-dot--two { fill: #e7bd57; }
+  .pizza-cheese-dot--three { fill: #d5a84a; }
+  .pizza-cheese-dot--four { fill: #f4e4ad; }
+  .pizza-pepper-green { fill: #6f844f; }
+  .pizza-pepper-red { fill: #bb5544; }
+  .pizza-mushroom { fill: #a9977f; }
+  .pizza-pineapple { fill: #d9ad42; }
+  .pizza-ham { fill: #c47b72; }
+
+  .card-add-icon {
+    width: 42px;
+    height: 42px;
+    margin: auto;
+    color: var(--tomato);
+  }
+
+  .card-content { text-align: left; }
+
+  .card-title {
+    margin: 0;
+    color: var(--char);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -.025em;
+  }
+
+  .card-edit-hint {
+    display: inline-block;
+    margin-top: .45rem;
+    color: var(--char-soft);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  &.add {
+    border-style: dashed;
+    background: color-mix(in srgb, var(--flour) 75%, transparent);
+
+    .card-action { min-height: 248px; justify-content: center; align-items: center; text-align: center; }
+    .card-content { text-align: center; }
+    &:hover { background: color-mix(in srgb, var(--tomato) 5%, var(--flour)); box-shadow: none; }
+  }
+}
